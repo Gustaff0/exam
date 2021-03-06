@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Hotel Reg</h1>
+<form action="{% url 'edit' hotel.pk %}" method="post">
+    {% csrf_token %}
+    <label>Name:</label><br/>
+    <input type="text" name="name" value="{{ hotel.name }}"></input><br/>
+    <label>Email:</label><br/>
+    <input type="email" name="mail" value="{{ hotel.mail }}"></input><br/>
+    <label>Full_Description:</label><br/>
+    <textarea type="text" name="text">{{ hotel.text }}</textarea><br/>
+    <br/>
+    <input type="submit" value="Send"/>
+</form>
+
+</body>
+</html>

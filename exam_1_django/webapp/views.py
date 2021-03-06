@@ -23,5 +23,16 @@ def hotel_create_view(request, *args, **kwargs):
             mail=mail,
             text=text
         )
-
     return redirect('home')
+
+
+def hotel_edit_view(request, pk):
+    hotel = get_object_or_404(Hotel, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'edit.html', context={'hotel': hotel})
+    elif request.method == 'POST':
+        hotel.name = request.POST.get('name')
+        hotel.mail = request.POST.get('mail')
+        hotel.text = request.POST.get('text')
+        hotel.save()
+        return redirect('home')
