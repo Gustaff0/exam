@@ -36,3 +36,12 @@ def hotel_edit_view(request, pk):
         hotel.text = request.POST.get('text')
         hotel.save()
         return redirect('home')
+
+
+def hotel_delete_view(request, pk):
+    hotel = get_object_or_404(Hotel, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete.html', context={'hotel': hotel})
+    elif request.method == 'POST':
+        hotel.delete()
+        return redirect('home')
