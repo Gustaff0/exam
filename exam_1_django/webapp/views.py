@@ -10,13 +10,6 @@ def hotel_list(request):
     return render(request, 'lists.html', context={'lists': lists})
 
 
-def hotel_view(request, pk):
-    try:
-        hotel = Hotel.objects.get(pk=pk)
-    except Modern.DoesNotExist:
-        raise Http404
-    return render(request, 'hotel_view.html', context={'hotel': hotel})
-
 def hotel_create_view(request, *args, **kwargs):
     if request.method == "GET":
         return render(request, 'create.html')
@@ -31,4 +24,4 @@ def hotel_create_view(request, *args, **kwargs):
             text=text
         )
 
-    return redirect('view', pk=hotel.pk)
+    return redirect('home')
