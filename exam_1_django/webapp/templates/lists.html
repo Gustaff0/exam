@@ -21,6 +21,7 @@
             <p class="card-text">{{ list.text }}</p>
             <a href="#" class="card-link">Edit</a>
             <a href="#" class="card-link">Delete</a>
+            <a href="{% url 'view' list.pk %}" class="card-link">View</a>
         </div>
     </div>
     {% endfor %}

@@ -1,4 +1,5 @@
 from django.db import models
+status_c = [('active', 'Active'), ('blocked', 'Blocked')]
 
 # Create your models here.
 class Hotel(models.Model):
@@ -7,7 +8,7 @@ class Hotel(models.Model):
     text = models.TextField(max_length=3000, null=False, blank=False)
     time_start = models.DateTimeField(auto_now_add=True, null=False, blank=True)
     time_edit = models.DateTimeField(auto_now=True, blank=True, null=False)
-    status = models.CharField(max_length=200, null=False, blank=False, default='active')
+    status = models.CharField(max_length=200, null=False, blank=False, choices=status_c, default='active')
 
 
     class Meta:
