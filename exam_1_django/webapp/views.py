@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from webapp.models import Hotel
 from django.http import HttpResponseRedirect, HttpResponseNotFound, Http404
 from django.core.exceptions import ObjectDoesNotExist
+from webapp.forms import RegForm
 
 # Create your views here.
 
@@ -16,30 +17,44 @@ def hotel_list(request):
 
 def hotel_create_view(request, *args, **kwargs):
     if request.method == "GET":
-        return render(request, 'create.html')
+        form = RegForm()
+        return render(request, 'create.html', context = {'form': form})
     elif request.method == "POST":
-        name = request.POST.get("name")
-        mail = request.POST.get("mail")
-        text = request.POST.get("text")
+        form = RegForm(data=request.POST)
+        if form.is_valid():
+            name = request.POST.get("name")
+            mail = request.POST.get("mail")
+            text = request.POST.get("text")
 
-        Hotel.objects.create(
-            name=name,
-            mail=mail,
-            text=text
-        )
-    return redirect('home')
+            Hotel.objects.create(
+                name=name,
+                mail=mail,
+                text=text
+            )
+            return redirect('home')
+        else:
+            return render(request, 'create.html', context={'form': form})
 
 
 def hotel_edit_view(request, pk):
     hotel = get_object_or_404(Hotel, pk=pk)
     if request.method == 'GET':
-        return render(request, 'edit.html', context={'hotel': hotel})
+        form = RegForm(initial={
+            'name': hotel.name,
+            'mail': hotel.mail,
+            'text': hotel.text
+        })
+        return render(request, 'edit.html', context={'form': form, 'hotel': hotel})
     elif request.method == 'POST':
-        hotel.name = request.POST.get('name')
-        hotel.mail = request.POST.get('mail')
-        hotel.text = request.POST.get('text')
-        hotel.save()
-        return redirect('home')
+        form = RegForm(data=request.POST)
+        if form.is_valid():
+            hotel.name = form.cleaned_data['name']
+            hotel.mail = form.cleaned_data['mail']
+            hotel.text = form.cleaned_data['text']
+            hotel.save()
+            return redirect('home')
+        else:
+            return render(request, 'edit.html', context={'form': form, 'hotel': hotel})
 
 
 def hotel_delete_view(request, pk):
