@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+{% block content %}
     <h1>Edit Hotel Reg</h1>
 <form action="{% url 'edit' hotel.pk %}" method="post">
     {% csrf_token %}
@@ -20,6 +22,7 @@
     <br/>
     <input type="submit" value="Send"/>
 </form>
+{% endblock %}
 
 </body>
 </html>
