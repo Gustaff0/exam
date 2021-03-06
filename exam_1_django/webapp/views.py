@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 def hotel_list(request):
-    lists = Hotel.objects.all()
+    lists = Hotel.objects.filter(status='active').order_by('-time_start')
     return render(request, 'lists.html', context={'lists': lists})
 
 
