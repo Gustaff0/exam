@@ -18,3 +18,4 @@ class Hotel(models.Model):
 
     def __str__(self):
         return f'{self.id}. {self.time_start}: {self.name} - {self.status}'
+

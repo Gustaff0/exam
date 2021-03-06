@@ -6,8 +6,12 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 def hotel_list(request):
-    lists = Hotel.objects.filter(status='active').order_by('-time_start')
-    return render(request, 'lists.html', context={'lists': lists})
+    if request.GET.get('search'):
+        lists = Hotel.objects.filter(name=request.GET.get('search')).order_by('-time_start')
+        return render(request, 'lists.html', context={'lists': lists})
+    else:
+        lists = Hotel.objects.filter(status='active').order_by('-time_start')
+        return render(request, 'lists.html', context={'lists': lists})
 
 
 def hotel_create_view(request, *args, **kwargs):
@@ -45,3 +49,20 @@ def hotel_delete_view(request, pk):
     elif request.method == 'POST':
         hotel.delete()
         return redirect('home')
+
+def reg_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Post.objects.annotate(
+                search=SearchVector('title', 'body'),
+            ).filter(search=query)
+    return render(request,
+                  'result_search.html',
+                  {'form': form,
+                   'query': query,
+                   'results': results})
