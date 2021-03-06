@@ -1,0 +1,92 @@
+[
+{
+  "model": "webapp.hotel",
+  "pk": 3,
+  "fields": {
+    "name": "Forget",
+    "mail": "NONNNEEE@mail.ru",
+    "text": "dggggggggggggggggggggggggggggggggg",
+    "time_start": "2021-03-06T07:52:42.804Z",
+    "time_edit": "2021-03-06T07:52:42.804Z",
+    "status": "blocked"
+  }
+},
+{
+  "model": "webapp.hotel",
+  "pk": 4,
+  "fields": {
+    "name": "Name",
+    "mail": "barsbekclash@gmail.com",
+    "text": "fdgdgdgdgdgdgdg",
+    "time_start": "2021-03-06T08:03:59.845Z",
+    "time_edit": "2021-03-06T08:03:59.845Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.hotel",
+  "pk": 5,
+  "fields": {
+    "name": "logggg",
+    "mail": "dgdgd@mail.ru",
+    "text": "fgfgfffff",
+    "time_start": "2021-03-06T08:04:42.578Z",
+    "time_edit": "2021-03-06T08:04:42.578Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.hotel",
+  "pk": 6,
+  "fields": {
+    "name": "dgdgdg",
+    "mail": "barsbekclash@gmail.com",
+    "text": "dgdgdgfgdgdg",
+    "time_start": "2021-03-06T08:13:20.353Z",
+    "time_edit": "2021-03-06T08:13:20.353Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.hotel",
+  "pk": 7,
+  "fields": {
+    "name": "fgdgdgd",
+    "mail": "dgdfggd@fdgdf",
+    "text": "22423gdgdgdgd",
+    "time_start": "2021-03-06T10:22:36.364Z",
+    "time_edit": "2021-03-06T10:22:36.364Z",
+    "status": "active"
+  }
+},
+{
+  "model": "webapp.hotel",
+  "pk": 8,
+  "fields": {
+    "name": "Forget",
+    "mail": "barsbekclash@gmail.com",
+    "text": "ffffffff",
+    "time_start": "2021-03-06T11:01:24.335Z",
+    "time_edit": "2021-03-06T11:01:24.336Z",
+    "status": "active"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$Rf9jKvnyirBi$TVsKu1k7vMlVQ7ZNy/4A3gbkkcg/TZMkfGqrn3W3dcY=",
+    "last_login": "2021-03-06T06:18:11.389Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-03-06T06:17:38.169Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
