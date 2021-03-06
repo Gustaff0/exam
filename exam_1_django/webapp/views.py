@@ -16,3 +16,19 @@ def hotel_view(request, pk):
     except Modern.DoesNotExist:
         raise Http404
     return render(request, 'hotel_view.html', context={'hotel': hotel})
+
+def hotel_create_view(request, *args, **kwargs):
+    if request.method == "GET":
+        return render(request, 'create.html')
+    elif request.method == "POST":
+        name = request.POST.get("name")
+        mail = request.POST.get("mail")
+        text = request.POST.get("text")
+
+        hotel = Hotel.objects.create(
+            name=name,
+            mail=mail,
+            text=text
+        )
+
+    return redirect('view', pk=hotel.pk)
