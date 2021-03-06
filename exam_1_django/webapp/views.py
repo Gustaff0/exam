@@ -18,7 +18,7 @@ def hotel_create_view(request, *args, **kwargs):
         mail = request.POST.get("mail")
         text = request.POST.get("text")
 
-        hotel = Hotel.objects.create(
+        Hotel.objects.create(
             name=name,
             mail=mail,
             text=text
