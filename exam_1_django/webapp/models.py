@@ -16,4 +16,4 @@ class Hotel(models.Model):
         verbose_name_plural = 'Регистрации'
 
     def __str__(self):
-        return f'{self.id}. {self.time_start}: {self.name} - {self.status} - {self.time_edit}'
+        return f'{self.id}. {self.time_start}: {self.name} - {self.status}'
